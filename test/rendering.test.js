@@ -56,6 +56,7 @@ test("theme toggle restores and persists the accessible preference", () => {
       addEventListener(event, listener) { this.listeners[event] = listener; },
       setAttribute(name, value) { this.attributes[name] = value; },
       replaceChildren() {},
+      append() {},
     });
   }
   const document = {
@@ -100,11 +101,11 @@ test("view changes compose with topics, announce empty results, and restore All 
       textContent: "",
       children: [],
       listeners: {},
-      setAttribute() {},
+      attributes: {},
+      setAttribute(name, value) { this.attributes[name] = value; },
       addEventListener(event, listener) { this.listeners[event] = listener; },
       append(...children) { this.children.push(...children); },
       replaceChildren(...children) { this.children = children; },
-      add(option) { this.children.push(option); },
     };
     Object.defineProperty(node, "innerHTML", {
       set() { assert.fail("Feed content must not be assigned to innerHTML"); },
@@ -122,7 +123,6 @@ test("view changes compose with topics, announce empty results, and restore All 
       querySelector(selector) { return elements.get(selector); },
       createElement,
     },
-    Option: function(text, value) { this.textContent = text; this.value = value; },
     fetch: async (url) => {
       requests.push(url);
       const params = new URL(url, "http://localhost").searchParams;
@@ -151,17 +151,18 @@ test("view changes compose with topics, announce empty results, and restore All 
   assert.equal(cards.children.length, 2);
   assert.equal(count.textContent, "2 entries");
   assert.equal(status.textContent, "");
-  assert.deepEqual(topic.children.map((option) => option.value), ["", ...tags]);
+  assert.deepEqual(topic.children.map((chip) => chip.textContent), ["All topics", ...tags]);
+  assert.equal(topic.children[0].attributes["aria-pressed"], "true");
 
-  topic.value = "copilot";
-  await topic.listeners.change();
+  topic.children.find((chip) => chip.textContent === "copilot").listeners.click();
+  await new Promise(setImmediate);
   assert.equal(requests.at(-1), "/api/entries?tag=copilot&view=deprecations");
   assert.equal(cards.children.length, 1);
   assert.equal(count.textContent, "1 entry");
-  assert.equal(topic.value, "copilot");
+  assert.equal(topic.children.find((chip) => chip.textContent === "copilot").attributes["aria-pressed"], "true");
 
-  topic.value = "release";
-  await topic.listeners.change();
+  topic.children.find((chip) => chip.textContent === "release").listeners.click();
+  await new Promise(setImmediate);
   assert.equal(cards.children.length, 0);
   assert.equal(count.textContent, "0 entries");
   assert.equal(status.textContent, "No deprecations match the selected topic.");
@@ -169,12 +170,12 @@ test("view changes compose with topics, announce empty results, and restore All 
   view.value = "";
   await view.listeners.change();
   assert.equal(requests.at(-1), "/api/entries?tag=release");
-  assert.equal(topic.value, "release");
+  assert.equal(topic.children.find((chip) => chip.textContent === "release").attributes["aria-pressed"], "true");
   assert.equal(cards.children.length, filterEntries(entries, "release").length);
   assert.equal(status.textContent, "");
 
-  topic.value = "";
-  await topic.listeners.change();
+  topic.children.find((chip) => chip.textContent === "All topics").listeners.click();
+  await new Promise(setImmediate);
   assert.equal(requests.at(-1), "/api/entries");
   assert.equal(cards.children.length, entries.length);
 });

@@ -25,17 +25,39 @@ test("the offline demo serves entries and only the committed fixture", async (t)
 
   const response = await fetch(`${base}/api/entries`);
   assert.equal(response.status, 200);
+  const allEntriesEtag = response.headers.get("etag");
+  assert.ok(allEntriesEtag);
   const { entries, tags } = await response.json();
   assert.equal(entries.length, 17);
   assert.equal(entries[0].title, "GitHub Copilot code review is generally available");
   assert.ok(tags.includes("retired"));
 
+  const unchanged = await fetch(`${base}/api/entries`, {
+    headers: { "If-None-Match": allEntriesEtag, "Cache-Control": "max-age=0" },
+  });
+  assert.equal(unchanged.status, 304);
+  assert.equal(await unchanged.text(), "");
+
   const filtered = await fetch(`${base}/api/entries?tag=retired`);
   const filteredBody = await filtered.json();
   assert.equal(filtered.status, 200);
+  const filteredEtag = filtered.headers.get("etag");
+  assert.ok(filteredEtag);
+  assert.notEqual(filteredEtag, allEntriesEtag);
   assert.equal(filteredBody.entries.length, 2);
   assert.ok(filteredBody.entries.every((entry) => entry.tags.includes("retired")));
   assert.deepEqual(filteredBody.tags, tags);
+
+  const changedFilter = await fetch(`${base}/api/entries?tag=retired`, {
+    headers: { "If-None-Match": allEntriesEtag, "Cache-Control": "max-age=0" },
+  });
+  assert.equal(changedFilter.status, 200);
+  assert.equal(changedFilter.headers.get("etag"), filteredEtag);
+
+  const unchangedFilter = await fetch(`${base}/api/entries?tag=retired`, {
+    headers: { "If-None-Match": filteredEtag, "Cache-Control": "max-age=0" },
+  });
+  assert.equal(unchangedFilter.status, 304);
 
   for (const [query, expected] of [
     ["view=deprecations", 2],

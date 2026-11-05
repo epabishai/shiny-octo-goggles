@@ -4,6 +4,7 @@ const viewFilter = document.querySelector("#view-filter");
 const entryCount = document.querySelector("#entry-count");
 const statusMessage = document.querySelector("#status");
 const themeToggle = document.querySelector("#theme-toggle");
+let selectedTag = "";
 
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
@@ -52,15 +53,22 @@ function createCard(entry) {
 }
 
 function updateTagOptions(tags) {
-  const selectedTag = tagFilter.value;
-  tagFilter.replaceChildren(new Option("All topics", ""));
-
-  for (const tag of tags) {
-    tagFilter.add(new Option(tag, tag));
+  if (selectedTag && !tags.includes(selectedTag)) {
+    selectedTag = "";
   }
 
-  if (tags.includes(selectedTag)) {
-    tagFilter.value = selectedTag;
+  tagFilter.replaceChildren();
+  for (const [label, value] of [["All topics", ""], ...tags.map((tag) => [tag, tag])]) {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "filter-chip";
+    chip.textContent = label;
+    chip.setAttribute("aria-pressed", String(value === selectedTag));
+    chip.addEventListener("click", () => {
+      selectedTag = value;
+      loadEntries();
+    });
+    tagFilter.append(chip);
   }
 }
 
@@ -70,8 +78,8 @@ async function loadEntries() {
 
   try {
     const params = [];
-    if (tagFilter.value) {
-      params.push(`tag=${encodeURIComponent(tagFilter.value)}`);
+    if (selectedTag) {
+      params.push(`tag=${encodeURIComponent(selectedTag)}`);
     }
     if (viewFilter.value) {
       params.push(`view=${encodeURIComponent(viewFilter.value)}`);
