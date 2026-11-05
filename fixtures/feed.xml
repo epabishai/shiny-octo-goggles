@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0">
+
+  <channel>
+
+    <title>GitHub Changelog (fixture)</title>
+
+    <link>https://github.blog/changelog/</link>
+
+    <description>Snapshot of recent GitHub changelog headlines for offline demos.</description>
+
+    <item>
+      <title>GitHub Copilot code review is generally available</title>
+      <link>https://github.blog/changelog/2025-04-04-copilot-code-review-ga/</link>
+      <pubDate>Fri, 04 Apr 2025 16:00:00 +0000</pubDate>
+      <category>GitHub Copilot</category>
+      <category>General availability</category>
+      <description><![CDATA[<p>Copilot code review is now generally available, helping teams review pull requests with AI-powered feedback.</p>]]></description>
+    </item>
+
+    <item>
+
+      <title>GitHub Copilot supports server-to-server authentication</title>
+
+      <link>https://github.blog/changelog/2026-10-27-github-copilot-supports-server-to-server-authentication</link>
+
+      <pubDate>Tue, 27 Oct 2026 12:00:00 +0000</pubDate>
+
+      <category>release</category><category>copilot</category>
+
+      <description>Read the full entry on the GitHub changelog.</description>
+
+    </item>
+
+    <item>
+
+      <title>GitHub Copilot assisted permissions generally available</title>
+
+      <link>https://github.blog/changelog/2026-10-26-github-copilot-assisted-permissions-generally-available</link>
+
+      <pubDate>Mon, 26 Oct 2026 12:00:00 +0000</pubDate>
+
+      <category>release</category><category>copilot</category><category>client-apps</category>
+
+      <description>A model evaluates each permission request. Clearly safe ones proceed automatically and the rest ask you. Available in the Copilot CLI, the Copilot app, and VS Code.</description>
+
+    </item>
+
+    <item>
+
+      <title>GPT-6.1 Terra in GitHub Copilot</title>
+
+      <link>https://github.blog/changelog/2026-10-26-gpt-6-1-terra-in-github-copilot</link>
+
+      <pubDate>Mon, 26 Oct 2026 11:00:00 +0000</pubDate>
+
+      <category>release</category><category>copilot</category>
+
+      <description>Read the full entry on the GitHub changelog.</description>
+
+    </item>
+
+    <item>
+
+      <title>Turn notifications into code with GitHub Copilot in Teams</title>
+
+      <link>https://github.blog/changelog/2026-10-23-turn-notifications-into-code-with-github-copilot-in-teams</link>
+
+      <pubDate>Fri, 23 Oct 2026 12:00:00 +0000</pubDate>
+
+      <category>improvement</category><category>client-apps</category><category>collaboration-tools</category>
+
+      <description>Read the full entry on the GitHub changelog.</description>
+
+    </item>
+
+    <item>
+
+      <title>Pull requests: Saved whitespace preferences and improved split view</title>
+
+      <link>https://github.blog/changelog/2026-10-22-pull-requests-saved-whitespace-preferences-and-improved-split-view</link>
+
+      <pubDate>Thu, 22 Oct 2026 12:00:00 +0000</pubDate>
+
+      <category>improvement</category><category>collaboration-tools</category>
+
+      <description>Read the full entry on the GitHub changelog.</description>
+
+    </item>
+
+    <item>
+
+      <title>GitHub CLI: Opt in to expiring, auto-refreshing OAuth tokens</title>
+
+      <link>https://github.blog/changelog/2026-10-21-github-cli-opt-in-to-expiring-auto-refreshing-oauth-tokens</link>
+
+      <pubDate>Wed, 21 Oct 2026 12:00:00 +0000</pubDate>
+
+      <category>release</category><category>application-security</category><category>client-apps</category>
+
+      <description>Read the full entry on the GitHub changelog.</description>
+
+    </item>
+
+    <item>
+
+      <title>GitHub package firewall in public preview</title>
+
+      <link>https://github.blog/changelog/2026-10-20-github-package-firewall-in-public-preview</link>
+
+      <pubDate>Tue, 20 Oct 2026 14:00:00 +0000</pubDate>
+
+      <category>release</category><category>supply-chain-security</category>
+
+      <description>An install-time policy gate between agents or CI runners and upstream registries. Checks include a cooldown period and advisory lookups. npm only for now.</description>
+
+    </item>
+
+    <item>
+
+      <title>Dependabot now supports npm 12, pnpm 11 and 12, and Bun 1.4</title>
+
+      <link>https://github.blog/changelog/2026-10-20-dependabot-now-supports-npm-12-pnpm-11-and-12-and-bun-1-4</link>
+
+      <pubDate>Tue, 20 Oct 2026 12:00:00 +0000</pubDate>
+
+      <category>improvement</category><category>supply-chain-security</category>
+
+      <description>Read the full entry on the GitHub changelog.</description>
+
+    </item>
+
+    <item>
+
+      <title>GitHub Copilot models deprecated on October 19, 2026</title>
+
+      <link>https://github.blog/changelog/2026-10-19-github-copilot-models-deprecated-on-october-19-2026</link>
+
+      <pubDate>Mon, 19 Oct 2026 12:00:00 +0000</pubDate>
+
+      <category>retired</category><category>copilot</category><category>Deprecations</category>
+
+      <description>Read the full entry on the GitHub changelog.</description>
+
+    </item>
+
+    <item>
+
+      <title>AI Scan for pull requests generally available</title>
+
+      <link>https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available</link>
+
+      <pubDate>Thu, 15 Oct 2026 13:00:00 +0000</pubDate>
+
+      <category>release</category><category>application-security</category>
+
+      <description>Read the full entry on the GitHub changelog.</description>
+
+    </item>
+
+    <item>
+
+      <title>Agentic autofix for code scanning alerts general availability</title>
+
+      <link>https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability</link>
+
+      <pubDate>Thu, 15 Oct 2026 12:00:00 +0000</pubDate>
+
+      <category>release</category><category>application-security</category>
+
+      <description>Read the full entry on the GitHub changelog.</description>
+
+    </item>
+
+    <item>
+
+      <title>GitHub Actions workflow lockfiles in public preview</title>
+
+      <link>https://github.blog/changelog/2026-10-14-github-actions-workflow-lockfiles-in-public-preview</link>
+
+      <pubDate>Wed, 14 Oct 2026 12:00:00 +0000</pubDate>
+
+      <category>release</category><category>actions</category>
+
+      <description>Read the full entry on the GitHub changelog.</description>
+
+    </item>
+
+    <item>
+
+      <title>Local sandboxing for GitHub Copilot now generally available</title>
+
+      <link>https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available</link>
+
+      <pubDate>Wed, 07 Oct 2026 12:00:00 +0000</pubDate>
+
+      <category>release</category><category>application-security</category><category>copilot</category>
+
+      <description>Read the full entry on the GitHub changelog.</description>
+
+    </item>
+
+    <item>
+
+      <title>Stacked pull requests generally available</title>
+
+      <link>https://github.blog/changelog/2026-10-06-stacked-pull-requests-generally-available</link>
+
+      <pubDate>Tue, 06 Oct 2026 12:00:00 +0000</pubDate>
+
+      <category>release</category><category>collaboration-tools</category>
+
+      <description>Read the full entry on the GitHub changelog.</description>
+
+    </item>
+
+    <item>
+
+      <title>Dynamic workflows in Copilot CLI and the Copilot app</title>
+
+      <link>https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app</link>
+
+      <pubDate>Thu, 01 Oct 2026 13:00:00 +0000</pubDate>
+
+      <category>release</category><category>copilot</category>
+
+      <description>Define an orchestration in code: automated steps plus one or more agents, run in sequence or in parallel, with checkpoints you can pause and resume at.</description>
+
+    </item>
+
+    <item>
+
+      <title>GitHub Actions: macOS 14 runner image retirement</title>
+
+      <link>https://github.blog/changelog/2026-10-01-github-actions-macos-14-runner-image-retirement</link>
+
+      <pubDate>Thu, 01 Oct 2026 12:00:00 +0000</pubDate>
+
+      <category>retired</category><category>actions</category><category>Deprecations</category>
+
+      <description>Read the full entry on the GitHub changelog.</description>
+
+    </item>
+
+  </channel>
+
+</rss>

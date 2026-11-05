@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Browse recent GitHub changelog entries in a filterable feed.">
+    <title>Changelog Radar</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <p class="eyebrow">GitHub Blog</p>
+        <h1>Changelog Radar</h1>
+        <p class="intro">A quick, filterable look at what’s new across GitHub.</p>
+      </div>
+    </header>
+    <main class="container">
+      <section class="toolbar" aria-label="Changelog filters">
+        <label for="view-filter">View</label>
+        <select id="view-filter" name="view">
+          <option value="">All entries</option>
+          <option value="deprecations">Deprecations</option>
+        </select>
+        <label for="tag-filter">Filter by topic</label>
+        <select id="tag-filter" name="tag">
+          <option value="">All topics</option>
+        </select>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
+        <p id="entry-count" class="entry-count" aria-live="polite"></p>
+      </section>
+      <section id="entries" class="entries" aria-label="Changelog entries"></section>
+      <p id="status" class="status" role="status">Loading changelog…</p>
+    </main>
+    <footer class="container footer">
+      <p>Demo data is served from the committed <code>fixtures/feed.xml</code>.</p>
+    </footer>
+  </body>
+</html>
