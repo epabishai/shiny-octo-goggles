@@ -15,6 +15,10 @@ npm start
 
 Open <http://localhost:3000>. Choose a topic chip to filter the cards, or use the Dark mode button to switch themes; your choice is saved in this browser. The API also supports `GET /api/entries?tag=Security` and conditional requests with `ETag`/`If-None-Match` (including topic-filtered responses). `GET /fixtures/feed.xml` serves the committed fixture.
 
+Topic chips are keyboard-accessible buttons that announce their pressed state and
+keep focus when results refresh. Choose **All topics** to clear the topic filter;
+topic matching ignores case and surrounding whitespace.
+
 Choose **Deprecations** in the View selector to show only entries tagged Deprecations,
 or **All entries** to return to the full feed. Topic filtering applies in both views;
 an empty state appears when no entries match. The API supports the same combination,

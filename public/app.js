@@ -57,18 +57,28 @@ function updateTagOptions(tags) {
     selectedTag = "";
   }
 
-  tagFilter.replaceChildren();
-  for (const [label, value] of [["All topics", ""], ...tags.map((tag) => [tag, tag])]) {
-    const chip = document.createElement("button");
-    chip.type = "button";
-    chip.className = "filter-chip";
-    chip.textContent = label;
-    chip.setAttribute("aria-pressed", String(value === selectedTag));
-    chip.addEventListener("click", () => {
-      selectedTag = value;
-      loadEntries();
-    });
-    tagFilter.append(chip);
+  const options = [["All topics", ""], ...tags.map((tag) => [tag, tag])];
+  const chips = [...tagFilter.children];
+  if (chips.length !== options.length
+    || chips.some((chip, index) => chip.value !== options[index][1])) {
+    tagFilter.replaceChildren();
+    for (const [label, value] of options) {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.value = value;
+      chip.className = "filter-chip";
+      chip.textContent = label;
+      chip.addEventListener("click", () => {
+        selectedTag = value;
+        updateTagOptions(tags);
+        return loadEntries();
+      });
+      tagFilter.append(chip);
+    }
+  }
+
+  for (const chip of tagFilter.children) {
+    chip.setAttribute("aria-pressed", String(chip.value === selectedTag));
   }
 }
 
@@ -105,7 +115,6 @@ async function loadEntries() {
   }
 }
 
-tagFilter.addEventListener("change", loadEntries);
 viewFilter.addEventListener("change", loadEntries);
 themeToggle.addEventListener("click", () => {
   const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";

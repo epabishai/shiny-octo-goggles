@@ -154,12 +154,21 @@ test("view changes compose with topics, announce empty results, and restore All 
   assert.deepEqual(topic.children.map((chip) => chip.textContent), ["All topics", ...tags]);
   assert.equal(topic.children[0].attributes["aria-pressed"], "true");
 
-  topic.children.find((chip) => chip.textContent === "copilot").listeners.click();
-  await new Promise(setImmediate);
+  const originalChips = [...topic.children];
+  const copilotChip = topic.children.find((chip) => chip.textContent === "copilot");
+  assert.equal(copilotChip.tagName, "button");
+  assert.equal(copilotChip.type, "button");
+  const selection = copilotChip.listeners.click();
+  assert.equal(copilotChip.attributes["aria-pressed"], "true");
+  assert.equal(topic.children[0].attributes["aria-pressed"], "false");
+  await selection;
   assert.equal(requests.at(-1), "/api/entries?tag=copilot&view=deprecations");
   assert.equal(cards.children.length, 1);
   assert.equal(count.textContent, "1 entry");
   assert.equal(topic.children.find((chip) => chip.textContent === "copilot").attributes["aria-pressed"], "true");
+  for (const [index, chip] of originalChips.entries()) {
+    assert.equal(topic.children[index], chip, "Keep chip nodes mounted to preserve keyboard focus");
+  }
 
   topic.children.find((chip) => chip.textContent === "release").listeners.click();
   await new Promise(setImmediate);
@@ -178,4 +187,13 @@ test("view changes compose with topics, announce empty results, and restore All 
   await new Promise(setImmediate);
   assert.equal(requests.at(-1), "/api/entries");
   assert.equal(cards.children.length, entries.length);
+  assert.equal(topic.children[0], originalChips[0]);
+  assert.equal(topic.children[0].attributes["aria-pressed"], "true");
+  assert.equal(copilotChip.attributes["aria-pressed"], "false");
+
+  const markupTag = "<img src=x onerror=alert(1)>";
+  context.updateTagOptions([markupTag]);
+  assert.equal(topic.children[1].textContent, markupTag);
+  assert.equal(topic.children[1].tagName, "button");
+  assert.equal(topic.children[0].attributes["aria-pressed"], "true");
 });

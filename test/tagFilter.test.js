@@ -16,6 +16,19 @@ test("matches tags without regard to surrounding whitespace or case", () => {
   assert.deepEqual(filterEntries(entries, " security "), [entries[0]]);
 });
 
+test("topic matching normalizes entry tags and requires a complete tag", () => {
+  const topics = [
+    { title: "Exact", tags: [" SECURITY "] },
+    { title: "Partial", tags: ["Security preview"] },
+    { title: "Missing tags" },
+    { title: "Invalid tags", tags: [null, 42] },
+  ];
+  const original = structuredClone(topics);
+  assert.deepEqual(filterEntries(topics, " SeCuRiTy "), [topics[0]]);
+  assert.deepEqual(topics, original);
+  assert.equal(filterEntries(topics, "   "), topics);
+});
+
 test("returns no entries when a topic does not match", () => {
   assert.deepEqual(filterEntries(entries, "Projects"), []);
 });
