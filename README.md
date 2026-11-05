@@ -74,6 +74,9 @@ Open <http://localhost:3000>. Stop the app with `Ctrl+C`, or run `docker compose
 ## Presenter setup
 
 Follow [the demo walkthrough](demo/demo.md) for the acts and pre-flight checklist.
+For Copilot Automations, see [Vignette 5's setup and verification checklist](demo/new-demo.md#5-keep-work-moving-automatically-3-min--24),
+including fixture-only triage, personal/shared ownership, credit caps, and change history.
+An authorized owner must save the automation in GitHub; these docs do not enable it.
 Preview the eleven demo issues with `./scripts/seed-issues.sh --dry-run`, then run
 `./scripts/seed-issues.sh` to create them in this checkout's GitHub repository
 (requires authenticated `gh`). Existing issue titles are skipped, including closed
