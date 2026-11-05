@@ -82,9 +82,10 @@ Show a small stack (tests, then refactor) reviewed layer by layer.
 
 ## 4. Merge with confidence (3 min) — #23
 
-On the #9 PR, request Copilot review at **Max**. Show the approval assessment
-in the overview comment. Enable **Watch and fix** (Agent Merge) in the merge
-box.
+On the #9 PR, open the reviewer effort selector and show **Lite**, **Balanced**,
+and **Max**, then request Copilot review at **Max**. Show the approval
+assessment in the overview comment. Enable **Watch and fix** (Agent Merge) in
+the merge box.
 
 Talking point: Max runs independent review agents across model providers and
 reconciles them into one low-noise review. It is slower and uses more AI
