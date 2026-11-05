@@ -94,6 +94,39 @@ select {
   font: inherit;
 }
 
+.topic-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.filter-label {
+  font-weight: 700;
+}
+
+.tag-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.filter-chip {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--control-border);
+  border-radius: 999px;
+  background: var(--surface-color);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.filter-chip[aria-pressed="true"] {
+  border-color: var(--tag-color);
+  background: var(--tag-background);
+  color: var(--tag-color);
+}
+
 .theme-toggle {
   padding: 0.6rem 0.75rem;
   border: 1px solid var(--control-border);

@@ -23,10 +23,10 @@
           <option value="">All entries</option>
           <option value="deprecations">Deprecations</option>
         </select>
-        <label for="tag-filter">Filter by topic</label>
-        <select id="tag-filter" name="tag">
-          <option value="">All topics</option>
-        </select>
+        <div class="topic-filter">
+          <span class="filter-label">Filter by topic</span>
+          <div id="tag-filter" class="tag-filters" role="group" aria-label="Filter by topic"></div>
+        </div>
         <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
         <p id="entry-count" class="entry-count" aria-live="polite"></p>
       </section>

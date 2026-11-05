@@ -5,6 +5,7 @@ const parseFeed = require("./src/legacy/parseFeed");
 const { filterEntries } = require("./src/lib/tagFilter");
 
 const app = express();
+app.set("etag", "weak");
 const publicDirectory = path.join(__dirname, "public");
 const fixtureXml = fs.readFileSync(path.join(__dirname, "fixtures", "feed.xml"), "utf8");
 
